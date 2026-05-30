@@ -2,6 +2,14 @@
 
 All notable changes to the WaterrAI skills are documented here. Versions follow [SemVer](https://semver.org/).
 
+## [2.0.1] — 2026-05-31
+
+### Changed
+- Tightened the `description` field opening sentence so the skills.sh auto-generated summary headline reads as one crisp claim ("Build production integrations…") instead of a long trigger-list run-on.
+- Added an `## Overview` section to the body, mirroring the structure of top-ranked Anthropic skills (`pdf`, `excel`, etc.). Bulleted, scannable, designed to render cleanly when skills.sh re-summarises.
+
+No behavior change for installed agents.
+
 ## [2.0.0] — 2026-05-31
 
 ### Changed (breaking)

@@ -1,17 +1,24 @@
 ---
 name: waterr-api
-description: Build custom integrations on the WaterrAI platform — AI meetings, scenarios, personas, transcripts, and analyses via the public REST API. Use when the user asks to integrate WaterrAI, build on top of Waterr, automate meeting creation, programmatically run AI interview/sales/training/onboarding sessions, ingest WaterrAI transcripts or analyses, build candidate-screening or customer-discovery flows, or says "build something with Waterr". Internally invokes a `generate-understanding` sub-skill that scopes the use case before any code is written.
+description: Build production integrations on the WaterrAI meeting platform — AI personas, scenarios, live meetings, transcripts, recordings, and post-meeting analyses via the public REST API. Use whenever the user wants to integrate WaterrAI, build on top of Waterr, automate meeting creation, run programmatic AI interview/sales/training/onboarding sessions, ingest transcripts or analyses, build candidate-screening or customer-discovery flows, or mentions "Waterr", "meet.waterr.ai", or "build something with Waterr". Bundles a scoping sub-skill that interviews the user and produces a written scope-of-work before any code is written.
 license: MIT
 compatibility: claude-code, cursor, windsurf, copilot
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   homepage: "https://docs.waterr.ai"
   source: "https://github.com/waterrai/skills"
 ---
 
 # WaterrAI Developer Skill
 
-You are helping the user build a custom integration on top of the WaterrAI platform. WaterrAI is an AI meeting platform — personas (the AI participants), scenarios (the meeting setup), meetings (live rooms), transcripts, and post-meeting analyses are the primary resources.
+## Overview
+
+Production-ready guide for building on the [WaterrAI](https://waterr.ai) meeting platform via its public REST API — personas, scenarios, meetings, transcripts, and analyses.
+
+- Covers the full developer surface: auth, session lifecycle, personas, scenarios, meetings, transcripts, recordings, analyses, goals, voices, users, webhooks, SDKs — every endpoint links straight to the live docs at https://docs.waterr.ai
+- Bundles a `generate-understanding` sub-skill that runs a 3-round scoping interview and produces `WATERR_BUILD_SCOPE.md` before any code is written — gates implementation on explicit user sign-off
+- Encodes the common pitfalls that bite first-time integrators: `membership_id` vs user ID, voice-ID enumeration, async analyses, workspace-scoped scenarios
+- Compatible with Claude Code, Cursor, Windsurf, and GitHub Copilot — install with `npx skills add waterrai/skills`
 
 ## First step, every time: scope before you code
 

@@ -1,9 +1,16 @@
 ---
-name: generate-understanding
-description: Interview the user to produce a written scope-of-work for a WaterrAI build before any code is written. Use at the start of any non-trivial WaterrAI integration. Outputs a markdown spec the user signs off on, then hands off to implementation. Saves rework — most failed Waterr integrations are scoped wrong, not coded wrong.
+name: waterr-generate-understanding
+description: Interview the user to produce a written scope-of-work for a WaterrAI build before any code is written. Use at the start of any non-trivial WaterrAI integration — companion to the `waterr` skill. Outputs a markdown spec the user signs off on, then hands off to implementation. Saves rework — most failed Waterr integrations are scoped wrong, not coded wrong.
+license: MIT
+compatibility: claude-code, cursor, windsurf, copilot
+metadata:
+  version: "1.0.0"
+  homepage: "https://docs.waterr.ai"
+  source: "https://github.com/waterrai/skills"
+  pairs-with: "waterr"
 ---
 
-# generate-understanding
+# waterr-generate-understanding
 
 Your job is to turn a vague "I want to build X on Waterr" into a concrete, written scope-of-work the user signs off on, *before* any code is written. Stop after producing the document — do not start implementing.
 
@@ -91,6 +98,6 @@ A short checklist: when these are true, v1 is shipped.
 After writing the file:
 1. Show the user the path: `WATERR_BUILD_SCOPE.md`.
 2. Ask: **"Does this match what you want? Anything to change before I start building?"**
-3. Wait for explicit yes. Then — and only then — hand back to the parent `waterr` skill to implement.
+3. Wait for explicit yes. Then — and only then — hand off to the `waterr` skill to implement.
 
 Do not write any production code in this skill. Your only deliverable is the scope document and explicit user sign-off.

@@ -1,10 +1,10 @@
 ---
-name: waterr
-description: Build custom integrations on the WaterrAI platform — AI meetings, scenarios, personas, transcripts, and analyses via the public REST API. Use when the user asks to integrate WaterrAI, build on top of Waterr, automate meeting creation, programmatically run AI interview/sales/training/onboarding sessions, ingest WaterrAI transcripts or analyses, build candidate-screening or customer-discovery flows, or says "build something with Waterr". Pairs with the `waterr-generate-understanding` skill which should run first for any non-trivial build to scope the use case before code is written.
+name: waterr-api
+description: Build custom integrations on the WaterrAI platform — AI meetings, scenarios, personas, transcripts, and analyses via the public REST API. Use when the user asks to integrate WaterrAI, build on top of Waterr, automate meeting creation, programmatically run AI interview/sales/training/onboarding sessions, ingest WaterrAI transcripts or analyses, build candidate-screening or customer-discovery flows, or says "build something with Waterr". Internally invokes a `generate-understanding` sub-skill that scopes the use case before any code is written.
 license: MIT
 compatibility: claude-code, cursor, windsurf, copilot
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
   homepage: "https://docs.waterr.ai"
   source: "https://github.com/waterrai/skills"
 ---
@@ -15,9 +15,9 @@ You are helping the user build a custom integration on top of the WaterrAI platf
 
 ## First step, every time: scope before you code
 
-For any request beyond a one-line "show me how to call endpoint X," invoke the companion skill **`waterr-generate-understanding`** before writing any code. It interviews the user, produces a written scope-of-work, and only then hands off to implementation. Skipping it produces code that doesn't match what the user actually wants.
+For any request beyond a one-line "show me how to call endpoint X," load and follow the bundled sub-skill at `skills/generate-understanding/SKILL.md` (relative to this file) before writing any code. It interviews the user, produces a written scope-of-work, and only then hands back to you for implementation. Skipping it produces code that doesn't match what the user actually wants.
 
-You may skip `waterr-generate-understanding` only when:
+You may skip the `generate-understanding` sub-skill only when:
 - The user explicitly says "skip the scoping" / "I know what I want, just do X"
 - The request is a single concrete API call lookup ("what's the curl for creating a persona?")
 
@@ -79,4 +79,4 @@ Verify each step against the docs page above before writing the call.
 
 - Cite the docs URL for every endpoint you reference.
 - Show real curl or SDK code, not pseudo-code.
-- If the user's request needs a flow you haven't built before, run `waterr-generate-understanding` first, write the scope to a file, get user sign-off, then implement.
+- If the user's request needs a flow you haven't built before, load `skills/generate-understanding/SKILL.md` first, write the scope to a file, get user sign-off, then implement.
